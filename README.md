@@ -142,6 +142,10 @@ support-ticket-classification/
 
 streamlit run app.py
 
+# User Interface:
+
+![img alt](https://github.com/SathishB-1/Support_Ticket_Classification_System/blob/3ca778a163d724e459f0c30563a54ec58b6cb33d/Screenshot%202026-02-21%20183214.png)
+
 # Business Impact:
 
 Automates ticket categorization
