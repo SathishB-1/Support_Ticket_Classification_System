@@ -144,7 +144,7 @@ streamlit run app.py
 
 # User Interface:
 
-![img alt](https://github.com/SathishB-1/Support_Ticket_Classification_System/blob/3ca778a163d724e459f0c30563a54ec58b6cb33d/Screenshot%202026-02-21%20183214.png)
+![img alt](https://github.com/SathishB-1/Support_Ticket_Classification_System/blob/da4abcbb1cbe5bf7e319b38e7f57915516684de2/Screenshot%202026-02-21%20184658.png)
 
 # Business Impact:
 
