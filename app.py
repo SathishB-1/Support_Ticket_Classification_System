@@ -10,7 +10,7 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 # Load trained model
-model = joblib.load("ticket_model.pkl(1)")
+model = joblib.load("ticket_model (1).pkl")
 
 # Text cleaning function
 def clean_text(text):
