@@ -1,175 +1,153 @@
-# Support Ticket Classification System
-# Project Overview:
+#  Support Ticket Classification System
+
+## Project Overview
 
 This project implements a Machine Learning-based system to automatically classify customer support tickets into predefined categories using Natural Language Processing (NLP).
 
-The system analyzes ticket text and predicts the appropriate category, helping automate ticket routing and improve support operations efficiency.
+The system analyses ticket text and predicts the appropriate category, helping automate ticket routing and improving support operations efficiency.
 
-# Problem Statement:
+---
 
-Support teams receive a large volume of customer tickets daily. Manually reading and categorizing these tickets:
+## Problem Statement
 
-Consumes time
+Support teams receive a large volume of customer tickets daily. Manually reading and categorising these tickets:
 
-Delays issue resolution
-
-Reduces operational efficiency
-
-Makes scaling difficult
+-  Consumes time
+-  Delays issue resolution
+-  Reduces operational efficiency
+-  Makes scaling difficult
 
 This project solves the problem by building an automated ticket classification system using supervised machine learning.
 
-# Dataset Description:
+---
 
-dataset link: https://www.kaggle.com/datasets/suraj520/customer-support-ticket-dataset 
+## Dataset
 
-The dataset contains two columns:
+**Source:** [Kaggle – Customer Support Ticket Dataset](https://www.kaggle.com/datasets/suraj520/customer-support-ticket-dataset)
 
-Column Name	Description
-Document	Support ticket text
-Topic_group	Ticket category label
+| Column | Description |
+|---|---|
+| `Document` | Support ticket text |
+| `Topic_group` | Ticket category label |
 
-Each ticket belongs to one predefined category.
+The dataset contains **3 806 labelled tickets** across **8 categories**.
 
-# Project Workflow:
+---
 
- 1️⃣ Data Preprocessing:
+## Project Workflow
 
-Removed missing values
+### 1️⃣ Data Preprocessing
+- Removed missing values
+- Converted text to lowercase
+- Removed punctuation, digits, and special characters
+- Removed NLTK English stopwords
+- Filtered out short noise words (< 3 characters)
 
-Converted text to lowercase
+### 2️⃣ Feature Engineering
+- Applied **TF-IDF Vectorisation** (unigrams + bigrams, top 20 000 features)
+- Converted text into a numerical matrix for model training
 
-Removed punctuation and special characters
+### 3️⃣ Model Training
+- Split dataset into training and testing sets
+- Used **LinearSVC** wrapped in an sklearn **Pipeline** for end-to-end classification
 
-Removed stopwords
-
-Cleaned noisy text
-
-  2️⃣ Feature Engineering:
-
-Applied TF-IDF Vectorization
-
-Used unigrams and bigrams
-
-Converted text into numerical format for model training
-
-   3️⃣ Model Training:
-
-Split dataset into training and testing sets
-
-Used LinearSVC (Support Vector Machine) for multi-class classification
-
-Trained model on processed text data
-
-   4️⃣ Model Evaluation:
-
+### 4️⃣ Model Evaluation
 The model was evaluated using:
+- Accuracy
+- Precision / Recall / F1-score
+- Confusion Matrix
 
-Accuracy
+---
 
-Precision
+## Supported Categories
 
-Recall
+| Icon | Category |
+|---|---|
+| 🖥️ | Hardware |
+| 🔑 | Access |
+| 📦 | Miscellaneous |
+| 👥 | HR Support |
+| 🛒 | Purchase |
+| 🛡️ | Administrative rights |
+| 💾 | Storage |
+| 📋 | Internal Project |
 
-F1-score
+---
 
-Confusion Matrix
+## Streamlit Web Application
 
-The model demonstrated strong performance in categorizing unseen support tickets.
+A beautiful, interactive web interface built with Streamlit featuring:
 
-# How the System Works:
+-  **Live ticket classification** with instant predictions
+-  **Example prompts** to try the model quickly
+-  **Dataset overview** with an Altair bar chart
+-  **Sample ticket browser**
+- ℹ **About tab** explaining the model pipeline
 
-User Input (Ticket Text)
+---
 
-→ Text Cleaning
+## Tech Stack
 
-→ TF-IDF Transformation
+| Technology | Purpose |
+|---|---|
+| Python 3.x | Core language |
+| scikit-learn | TF-IDF + LinearSVC pipeline |
+| NLTK | Stopword removal |
+| Streamlit | Web application frontend |
+| Altair | Interactive charts |
+| Pandas / NumPy | Data handling |
+| joblib | Model serialisation |
 
-→ LinearSVC Model
+---
 
-→ Predicted Category
+## Project Structure
 
-# Streamlit Web Application:
+```
+ML_TASK_2/
+├── all_tickets_processed_improved_v3.csv   # Processed dataset
+├── ML_Task_2.ipynb                         # Training notebook
+├── ticket_model.pkl                        # Trained sklearn Pipeline
+├── app.py                                  # Streamlit application
+├── requirements.txt                        # Python dependencies
+└── README.md                               # This file
+```
 
-A simple and interactive web interface was built using Streamlit.
+---
 
-Features:
+## How to Run
 
-User enters ticket description
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
 
-Model predicts category instantly
-
-Real-time classification output
-
-# Tech Stack:
-
-Python
-
-Pandas
-
-NumPy
-
-Scikit-learn
-
-NLTK
-
-TF-IDF
-
-LinearSVC
-
-Streamlit
-
-
-# Project Structure:
-
-support-ticket-classification/
-
-├── all_tickets_processed_improved_v3.csv
-
-├── ML_Task_2 (1).ipynb
-
-├──ticket_model.pkl
-
-├── app.py
-
-├── requirements.txt
-
-└── README.md
-
-# How to Run the Project:
-
- Run Streamlit App:
-
+# 2. Launch the app
 streamlit run app.py
+```
 
-# User Interface:
+---
 
-![img alt](https://github.com/SathishB-1/Support_Ticket_Classification_System/blob/da4abcbb1cbe5bf7e319b38e7f57915516684de2/Screenshot%202026-02-21%20184658.png)
+## Business Impact
 
-# Business Impact:
+| Benefit | Description |
+|---|---|
+|  Speed | Instant ticket categorisation |
+|  Accuracy | ML-driven, consistent predictions |
+|  Scalability | Handles high ticket volumes |
+|  Cost saving | Reduces manual triage effort |
+|  Better routing | Tickets reach the right team faster |
 
-Automates ticket categorization
+---
 
-Reduces manual workload
+## Future Improvements
 
-Improves routing efficiency
+-  Add priority prediction model
+-  Show confidence scores for each category
+-  Deploy on Streamlit Cloud / AWS
+-  Integrate with helpdesk APIs (Zendesk, Freshdesk)
+-  Replace LinearSVC with BERT / Transformer models
 
-Enables scalable support operations
+---
 
-Enhances response time
+## Conclusion
 
-# Future Improvements:
-
-Add priority prediction model
-
-Deploy on cloud (Streamlit Cloud / AWS)
-
-Integrate with helpdesk systems
-
-Use advanced NLP models (BERT, Transformers)
-
-Add confidence score visualization
-
-# Conclusion:
-
-This project demonstrates how NLP and Machine Learning can be used to automate real-world support workflows. By converting raw ticket text into structured categories, the system improves operational efficiency and scalability.
+This project demonstrates how NLP and Machine Learning can automate real-world support workflows. By converting raw ticket text into structured categories, the system improves operational efficiency and scalability significantly.
