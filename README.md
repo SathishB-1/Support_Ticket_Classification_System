@@ -126,6 +126,12 @@ streamlit run app.py
 
 ---
 
+## User Interface
+
+![img alt](https://github.com/SathishB-1/Support_Ticket_Classification_System/blob/efb472e00ecaff5a7c763d454c67c0ea4949f368/Screenshot%202026-03-04%20202632.png)
+
+---
+
 ## Business Impact
 
 | Benefit | Description |
